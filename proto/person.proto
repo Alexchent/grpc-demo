@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package rpc;
+
+//该go_package选项定义包的导入路径，该路径将包含此文件的所有生成代码。Go 包名称将是导入路径的最后一个路径组件。
+option go_package = "ad-service-rpc/pb;pb";
+
+/** 执行以下脚本生成go文件
+
+protoc --go_out=. --go_opt=paths=source_relative \
+    --go-grpc_out=. --go-grpc_opt=paths=source_relative \
+    proto/person.proto
+
+ */
+
+service Person {
+  rpc PersonList (PersonListRequest) returns (PersonListResponse) {}
+}
+
+message PersonListRequest{
+  string name=1;
+  optional int32 age=2;
+}
+
+message PersonListResponse{
+  repeated Woman women = 1;
+  int32 count = 2;
+}
+
+message Woman {
+  int32 id =1;
+  string name=2;
+  int32 age=3;
+  Level level = 4;
+
+  enum Level {
+    STUDENT = 0;        // 侍女
+    FURNACE = 1;        // 炉鼎 furnace
+    CONCUBINE = 2;      // 侍妾 concubine
+    WIFE = 3;           // 道侣
+  }
+}
+
+
+
+
