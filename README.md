@@ -1,14 +1,14 @@
 # grpc-demo
+本项目是基于GRPC构建微服务的实验
 
 > [协议缓冲区编译器安装](https://www.grpc.io/docs/protoc-installation/)
-
 
 ## 准备工作：
 
 ### 首先需要安装proto
 
 1. 安装go [去下载](https://golang.google.cn/)
-2. 安装协议缓存区编译器protobuf `brew install protobuf`
+2. Mac 安装协议缓存区编译器protobuf `brew install protobuf`，其他系统查询官网
 ```
 protoc --version # 确保版本为 3+
 ```
