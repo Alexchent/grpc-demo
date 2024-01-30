@@ -6,6 +6,7 @@ import (
 	"flag"
 	"fmt"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 	"log"
 	"net"
 )
@@ -21,6 +22,7 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 	s := grpc.NewServer()
+	reflection.Register(s)
 
 	//pb.RegisterEchoServer(s, &services.EchoSvc{})
 	pb.RegisterGreeterServer(s, &services.Greeter{})

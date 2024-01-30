@@ -88,3 +88,25 @@ protoc --go_out=. --go_opt=paths=source_relative \
     ├── helloworld.proto
     └── helloworld_grpc.pb.go
 ```
+
+
+## 使用grpcurl测试服务
+注意，grpcurl需要GRPC服务开启反射，方式如下：
+
+```
+s := grpc.NewServer()
+reflection.Register(s)  // 开启反射
+...
+```
+
+
+
+显示所有注册的服务
+```bash
+grpcurl -plaintext 127.0.0.1:50051 list
+```
+
+调用 Greeter/SayHello
+```bash
+grpcurl -plaintext -d '{"name":"x"}' 127.0.0.1:50051 rpc.Greeter/SayHello
+```
