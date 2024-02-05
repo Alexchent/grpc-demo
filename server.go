@@ -25,8 +25,8 @@ func main() {
 	reflection.Register(s)
 
 	//pb.RegisterEchoServer(s, &services.EchoSvc{})
-	pb.RegisterGreeterServer(s, &services.Greeter{})
-	pb.RegisterPersonServer(s, &services.Person{})
+	pb.RegisterGreeterServer(s, &services.Greeter{}) // 注册服务
+	pb.RegisterPersonServer(s, &services.Person{})   // 注册服务
 
 	log.Printf("GreeterSvc listening at %v", lis.Addr())
 	if err := s.Serve(lis); err != nil {

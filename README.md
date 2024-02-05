@@ -9,11 +9,9 @@
 
 1. 安装go [去下载](https://golang.google.cn/)
 2. Mac 安装协议缓存区编译器protobuf `brew install protobuf`，其他系统查询官网
-```
-protoc --version # 确保版本为 3+
-```
-3. 安装protoc-gen-go-grpc `brew install protoc-gen-go-grpc`
-4. 协议编译器的go插件
+3. 验证是否安装成功 `protoc --version`, 确保版本为 3+
+4. 安装protoc-gen-go-grpc `brew install protoc-gen-go-grpc`
+5. 协议编译器的go插件
     - 使用以下命令为 Go 安装协议编译器插件
     ```bash
     go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
