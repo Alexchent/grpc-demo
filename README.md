@@ -108,3 +108,15 @@ grpcurl -plaintext 127.0.0.1:50051 list
 ```bash
 grpcurl -plaintext -d '{"name":"x"}' 127.0.0.1:50051 rpc.Greeter/SayHello
 ```
+
+## 使用 [grpcui](https://github.com/fullstorydev/grpcui)测试
+
+安装
+```/bin/zsh
+brew install grpcui
+```
+
+启动
+```/bin/zsh
+grpcui -plaintext localhost:50051
+```

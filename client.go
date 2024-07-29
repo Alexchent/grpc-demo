@@ -1,6 +1,7 @@
 package main
 
 import (
+	grpclient "ad-service-rpc/client"
 	"ad-service-rpc/pb"
 	"context"
 	"flag"
@@ -12,9 +13,8 @@ import (
 
 // go run client.go -name=coo
 var (
-	addr    = flag.String("addr", "localhost:50051", "the address to connect to")
-	name    = flag.String("name", "tony", "Name to greet")
-	message = flag.String("message", "我的女人", "message to echo")
+	addr = flag.String("addr", "localhost:50051", "the address to connect to")
+	name = flag.String("name", "tony", "Name to greet")
 )
 
 func main() {
@@ -28,6 +28,19 @@ func main() {
 
 	// 初始化客户端
 	Hello(pb.NewGreeterClient(conn), &pb.HelloRequest{Name: *name})
+
+	// 注册多个grpc客户端到client
+	client := &grpclient.Client{}
+	client.Greeter = pb.NewGreeterClient(conn)
+	client.Person = pb.NewPersonClient(conn)
+
+	client.PersonList(&pb.PersonListRequest{
+		Name: "刀白凤",
+		Age:  22,
+	})
+
+	client.SayHello(&pb.HelloRequest{Name: "小王"})
+	client.SayHelloAgain(&pb.HelloRequest{Name: "小王"})
 }
 
 func Hello(c pb.GreeterClient, request *pb.HelloRequest) {
