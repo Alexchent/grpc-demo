@@ -22,7 +22,7 @@ message PersonListResponse{
 message Woman {
   int32 id =1;
   string name=2;
-  int32 age=3;
+  int32 age=3 [deprecated = true];
   Level level = 4;
 
   enum Level {

@@ -8,7 +8,7 @@ proto:
 # -go_out=. 等同于--go_out=paths=import:. 表示按照go_package的全路径创建目录层级
 .PHONY: p2
 p2:
-	protoc --proto_path=. --go_out=. proto/hi.proto
+	protoc --proto_path=. --go_out=. proto/person.proto
 	#protoc --proto_path=. --go_out=paths=import:. proto1/greeter/greeter_v2.proto
 
 # 启动grpc客户端
